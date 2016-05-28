@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
+
   root 'static_pages#home' 
 
   get 'static_pages/help', as: 'help'
 
   get 'static_pages/about', as: 'about'
 
-  resources :static_pages
+  get 'users/new', as: 'signup'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
