@@ -1,0 +1,102 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+$body-bg: transparent;
+$dark-grey: #222;
+
+@mixin cover-background($img-uri, $background-top:"center", 
+	$background-left:"center", 
+	$background-attachment:"fixed") 
+	{ background: url($img-uri) no-repeat unquote($background-top) unquote($background-left) unquote($background-attachment); 
+	-webkit-background-size: cover; 
+	-moz-background-size: cover; 
+	-o-background-size: cover; 
+	background-size: cover;
+}
+
+/* universal */
+
+body,html{
+	text-align:center;
+}
+
+container{
+	max-width:970px;
+}
+
+
+/* header */
+
+header{
+	background:#000;
+	color:white;
+}
+
+.navbar
+{
+	margin-bottom:0;
+}
+
+#logo{
+	float:left;
+	color:white;
+	font-size:24px;
+	font-width:200;
+	link-style:none;
+	padding:7px;
+}
+
+/* footer */
+
+footer{
+
+	.container{
+		p{
+			float:left;
+			color:white;
+			padding: 15px;
+		}
+	}
+	background-color: $dark-grey;
+}
+
+/* Home page */
+
+#splash{
+	height:1000px;
+	@include cover-background('Splash.jpeg', 80%, 100%, "scroll");
+
+	h1{
+	margin-top:120px;
+	margin-bottom:30px;
+	font-size:40px;
+		span{
+		color:white;
+		font-width:200;
+		background: $dark-grey;
+		border-radius:5px;
+		padding:10px;
+		}
+	}
+
+	p{
+		margin-bottom:60px;
+	}
+
+	.btn{
+		width:140px;
+		font-width:200;
+		font-size:28px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
