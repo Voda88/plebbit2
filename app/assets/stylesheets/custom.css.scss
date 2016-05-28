@@ -14,12 +14,23 @@ $dark-grey: #222;
 }
 
 /* universal */
-
-body,html{
-	text-align:center;
+html{
+	height:100%
 }
 
-container{
+body {
+  padding-top: 50px;
+  text-align:center;
+  height:100%;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 160px;
+  }
+}
+
+.container{
 	max-width:970px;
 }
 
@@ -48,27 +59,32 @@ header{
 /* footer */
 
 footer{
-
+	background-color: $dark-grey;
+	position:fixed;
+	bottom:0px;
+	width:100%;
 	.container{
 		p{
 			float:left;
 			color:white;
-			padding: 15px;
+			padding-top:40px;
 		}
 	}
-	background-color: $dark-grey;
+	
 }
 
 /* Home page */
 
 #splash{
-	height:1000px;
+	padding-top:30px;
+	height:100%;
 	@include cover-background('Splash.jpeg', 80%, 100%, "scroll");
 
 	h1{
 	margin-top:120px;
 	margin-bottom:30px;
 	font-size:40px;
+	line-height:2;
 		span{
 		color:white;
 		font-width:200;
@@ -87,6 +103,39 @@ footer{
 		font-width:200;
 		font-size:28px;
 	}
+}
+
+/*forms */ 
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+.btn{
+	margin-bottom:100px;
+}
+
+/* error messages */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }
 
 
