@@ -19,9 +19,12 @@ gem 'fog'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
-  gem 'web-console'
   gem 'spring'
   gem 'faker'
+end
+
+group :development do
+  gem 'web-console'
 end
 
 group :test do

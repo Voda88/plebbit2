@@ -7,4 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  include ApplicationHelper
+  include ActionView::Helpers::TextHelper
+  include ActionDispatch::TestProcess
 end
