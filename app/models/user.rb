@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-	attr_accessor :remember_token
+	attr_accessor :remember_token, :activation_token
 	has_secure_password
 	before_save { email.downcase! }
+	before_create :create_activation_digest
 	validates :first_name, presence: true, length: {maximum: 50}
 	validates :last_name, presence: true, length: {maximum:50}
 	validates :email, 
@@ -27,12 +28,27 @@ class User < ActiveRecord::Base
 		update_attribute(:remember_digest, User.digest(remember_token))
 	end
 
-	def authenticated?(remember_token)
-		return false if remember_digest.nil?
-		BCrypt::Password.new(remember_digest).is_password?(remember_token)
-	end
+	 # Returns true if the given token matches the digest.
+  	def authenticated?(attribute, token)
+    	digest = send("#{attribute}_digest")
+    	return false if digest.nil?
+    	BCrypt::Password.new(digest).is_password?(token)
+  	end
 
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+
+	private
+
+	# Converts email to all lower-case.
+    def downcase_email
+      self.email = email.downcase
+    end
+
+	# Creates and assigns the activation token and digest.
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 end

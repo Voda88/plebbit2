@@ -21,7 +21,7 @@ module SessionsHelper
 			@current_user ||= User.find_by(id: user_id)
 		elsif (user_id=cookies.signed[:user_id])
 			user= User.find_by(id: user_id)
-			if user && user.authenticated?(cookies[:remember_token])
+			if user && user.authenticated?(:remember, cookies[:remember_token])
 				log_in user
 				@current_user = user
 			end
@@ -51,8 +51,7 @@ module SessionsHelper
 		session[:forwarding_url] = request.url if request.get?
 	end
 
-	def full_name
-	 	"#{current_user.first_name} #{current_user.last_name}"
+	def full_name(user)
+		"#{user.first_name} #{user.last_name}"
 	end
-
 end
