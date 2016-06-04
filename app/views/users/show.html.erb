@@ -1,13 +1,13 @@
 <% provide(:title,"#{@user.first_name} #{@user.last_name}")%>
-<div class="row">
-	<h1><%= full_name(@user) %> </h1>
-	<div class="col-md-8">
-		<% if @user.topics.any? %>
-		<h3>Topics (<%= @user.topics.count %>)</h3>
-		<ol class="topics">
-			<%= render @user.topics %>
-		</ol>
-		<%= will_paginate @topics %>
-		<% end %>
-	</div>
+<div class="container">
+		<h1><%= full_name(@user) %> </h1>
+		<div class="col-md-8">
+			<% if @user.topics.any? %>
+			<h3>Topics (<%= @user.topics.count %>)</h3>
+			<ol class="topics">
+				<%= render @user.topics %>
+			</ol>
+			<%= will_paginate @topics %>
+			<% end %>
+		</div>
 </div>
