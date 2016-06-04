@@ -19,7 +19,14 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
+  get 'topics/index'
+  get 'new_topic' => 'topics#new'
+  post 'new_topic' => 'topics#create'
+  delete 'delete_topic' => 'topics#destroy'
+  
   resources :users
+  resources :topics
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 

@@ -97,5 +97,12 @@ class UserTest < ActiveSupport::TestCase
 		assert_not @user.authenticated?(:remember, '')
 	end
 
-	
+	test "associated topic should be destroyed" do
+    @user.save
+    @user.topics.create!(content: "Lorem ipsum",
+    					 title: "asdfasdfasdf")
+    assert_difference 'Topic.count', -1 do
+      @user.destroy
+    end
+  end
 end

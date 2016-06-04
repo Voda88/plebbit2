@@ -1,0 +1,22 @@
+<li id="topic-<%= topic.id %>">
+  <% if current_user.admin? %>
+  	<span class="user"><%= link_to full_name(topic.user), user_path(topic.user) %></span>
+  <% end %>
+
+  <span class="content">
+  	<%= link_to topic.title, topic_path(topic) %>
+  	<%= image_tag topic.picture.url if topic.picture? %>
+  </span>
+
+  <span class="picture">
+    <%= f.file_field :picture %>
+  </span>
+
+  <% if current_user.admin? %>
+  	<%= link_to "delete", topic_path(topic), method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(topic.created_at) %> ago.
+  </span>
+</li>

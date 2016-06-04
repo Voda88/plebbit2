@@ -21,7 +21,6 @@ html{
 body {
   text-align:center;
   height:100%;
-  overflow:hidden;
 }
 
 @media (max-width: 767px) {
@@ -36,6 +35,7 @@ body {
 .wrapper{
 	max-height: calc(100% - 50px);
     overflow-y: auto;
+    min-height:200px;
 }
 
 
@@ -44,6 +44,9 @@ body {
 header{
 	background:#000;
 	color:white;
+	p{
+		margin-bottom:20px;
+	}
 }
 
 .navbar
@@ -154,6 +157,54 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/* b */
+
+.btn {
+	margin:20px 20px 0px 20px;
+}
+
+/* topics */
+
+.topics {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }  
+}
+
+#new_topic{
+  	margin-top:100px;
+  	.btn {
+  		margin:0;
+  	}
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
   }
 }
 

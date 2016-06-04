@@ -6,6 +6,7 @@
 #
 
 michael:
+  id: 101
   first_name: Michael
   last_name: Example
   email: michael@example.com
@@ -15,6 +16,7 @@ michael:
   activated_at: <%= Time.zone.now %>
 
 archer:
+ id: 102
  first_name: Sterling 
  last_name: Archer
  email: duchess@example.gov
@@ -22,8 +24,9 @@ archer:
  activated: true
  activated_at: <%= Time.zone.now %>
 
-<% 100.times do |n| %>
+<% 99.times do |n| %>
 user_<%= n %>:
+  id: <%=n%>
   first_name: <%= "User #{n}" %>
   last_name: <%= "User #{n}" %>
   email: <%= "user-#{n}@example.com" %>
