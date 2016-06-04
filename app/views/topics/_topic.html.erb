@@ -8,10 +8,6 @@
   	<%= image_tag topic.picture.url if topic.picture? %>
   </span>
 
-  <span class="picture">
-    <%= f.file_field :picture %>
-  </span>
-
   <% if current_user.admin? %>
   	<%= link_to "delete", topic_path(topic), method: :delete,
                                   data: { confirm: "You sure?" } %>
