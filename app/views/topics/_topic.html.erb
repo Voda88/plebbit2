@@ -4,8 +4,12 @@
   <% end %>
 
   <span class="content">
-  	<%= link_to topic.title, topic_path(topic) %>
-  	<%= image_tag topic.picture.url if topic.picture? %>
+  	<h1><%= link_to topic.title, topic_path(topic) %></h1>
+    <% if topic.picture? %>
+      <a href="#" class="thumbnail">
+        <%= image_tag topic.picture.url  %>
+      </a>
+    <% end %>
   </span>
 
   <% if current_user.admin? %>

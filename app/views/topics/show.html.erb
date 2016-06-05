@@ -1,4 +1,3 @@
 <div class="container">
-	<%= image_tag @topic.picture.url if @topic.picture? %>
-	<p> <%= @topic.content %> </p>
+	<%= render @topic %>
 </div>

@@ -42,7 +42,6 @@ body {
     min-height:200px;
 }
 
-
 /* header */
 
 header{
@@ -167,7 +166,7 @@ input {
 /* b */
 
 .btn {
-	margin:20px 20px 0px 20px;
+	margin:20px 20px 20px 20px;
 }
 
 /* topics */
@@ -185,7 +184,6 @@ input {
   }
   .content {
     display: block;
-    margin-left: 60px;
     img {
       display: block;
       padding: 5px 0;
@@ -194,7 +192,6 @@ input {
   .timestamp {
     color: $gray-light;
     display: block;
-    margin-left: 60px;
   }  
 }
 
