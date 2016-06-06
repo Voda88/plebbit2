@@ -192,7 +192,16 @@ input {
   .timestamp {
     color: $gray-light;
     display: block;
-  }  
+  } 
+  .row{
+  	height:200px;
+  }
+  .thumbnail {
+  	height:180px;
+  	img {
+  		height:180px;
+  	}
+  } 
 }
 
 #new_topic{
@@ -209,8 +218,11 @@ aside {
   }
 }
 
+/* modal */
 
-
+.modal {
+	background:white;		
+}
 
 
 

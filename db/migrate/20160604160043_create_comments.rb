@@ -8,5 +8,6 @@ class CreateComments < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :topics, [:topic_id, :created_at, :]
   end
 end

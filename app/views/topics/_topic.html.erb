@@ -1,22 +1,26 @@
 <li id="topic-<%= topic.id %>">
   <% if current_user.admin? %>
-  	<span class="user"><%= link_to full_name(topic.user), user_path(topic.user) %></span>
+  <span class="user"><%= link_to full_name(topic.user), user_path(topic.user) %></span>
   <% end %>
 
-  <span class="content">
-  	<h1><%= link_to topic.title, topic_path(topic) %></h1>
-    <% if topic.picture? %>
-      <a href="#" class="thumbnail">
-        <%= image_tag topic.picture.url  %>
-      </a>
-    <% end %>
-  </span>
-
-  <% if current_user.admin? %>
-  	<%= link_to "delete", topic_path(topic), method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(topic.created_at) %> ago.
-  </span>
+  <div class="row content">
+    <div class="col-md-3 col-xs-3">
+      <% if topic.picture? %>
+        <a href="#" class="thumbnail", title="<%=topic.title%>">
+          <%= image_tag topic.picture.url  %>
+        </a>
+      <% end %>
+    </div>
+    <div class="col-md-6 col-xs-6">
+      <h1><%= link_to topic.title, topic_path(topic) %></h1>
+      <% if current_user.admin? %>
+      <%= link_to "delete", topic_path(topic), method: :delete,
+      data: { confirm: "You sure?" } %>
+      <% end %>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(topic.created_at) %> ago.
+      </span>
+    </div>
+  </div>
 </li>
+
