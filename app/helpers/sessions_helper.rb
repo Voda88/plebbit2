@@ -13,7 +13,7 @@ module SessionsHelper
 	def forget(user)
 		user.forget
 		cookies.delete(:user_id)
-		cookies.delete(:remember_token)
+		cookies.delete(:remember)
 	end
 
 	def current_user
@@ -55,6 +55,15 @@ module SessionsHelper
 		"#{user.first_name} #{user.last_name}"
 	end
 
+	#comment params
+	def post_params(post)
+		if post.is_a?(Topic)
+			post = {topic_id: post.id}
+		elsif post.is_a?(Comment)
+			post = {topic_id: post.topic_id, comment_id: post.id}
+		end
+	end
+
 	private
 
 	def logged_in_user
@@ -68,11 +77,6 @@ module SessionsHelper
   	def admin_user
     redirect_to(root_url) unless current_user.admin?
   	end
-
-  	def user_params
-  		params.require(:user).permit(:first_name,:last_name,:email,:password,:password_confirmation)
-  	end
-
 
   def correct_user
     @user = User.find(params[:id])

@@ -1,3 +1,7 @@
-<div class="container">
-	<%= render @topic %>
+<% provide(:title, @topic.title) %>
+
+<div class="posts">
+	<%= render partial:'shared/post', locals:{post: @topic} %>
 </div>
+
+<%= render 'topics/full_image' %>

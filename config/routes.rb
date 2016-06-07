@@ -21,12 +21,24 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   get 'topics/index'
+  get 'topics/show'
   get 'new_topic' => 'topics#new'
   post 'new_topic' => 'topics#create'
   delete 'delete_topic' => 'topics#destroy'
-  
+
+  get 'comments/show'
+  get 'new_comment' => 'comments#new'
+  post 'new_comment' => 'comments#create'
+  delete 'delete_comment' => 'comments#destroy'
+
   resources :users
-  resources :topics
+  
+  resources :topics do 
+    resources :comments
+  end
+  resources :comments do
+    resources :comments
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 

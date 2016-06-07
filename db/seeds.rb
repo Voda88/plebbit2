@@ -14,3 +14,8 @@ User.create!(first_name: "Mikko",
              admin:     true,
              activated: true,
              activated_at: Time.zone.now)
+
+Topic.create!(	title: "ASDFASFDSAFsda",
+				content: "asdfasdfsfdsafdsa",
+				user_id:1,			
+	)

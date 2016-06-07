@@ -11,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604160043) do
+ActiveRecord::Schema.define(version: 20160606044923) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.string   "title"
-    t.integer  "topic_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "picture"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "topic_id"
   end
 
-  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["commentable_id", "created_at"], name: "index_comments_on_commentable_id_and_created_at"
 
   create_table "topics", force: :cascade do |t|
     t.text     "content"
@@ -32,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160604160043) do
     t.datetime "updated_at", null: false
     t.string   "title"
     t.string   "picture"
+    t.integer  "comment_id"
   end
 
   add_index "topics", ["user_id", "created_at"], name: "index_topics_on_user_id_and_created_at"

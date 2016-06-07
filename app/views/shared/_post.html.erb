@@ -1,0 +1,33 @@
+<ol>
+  <li id="post-<%= post.id %>">
+    <% if current_user.admin? %>
+      <span class="user"><%= link_to full_name(User.find_by_id(post.user_id)), polymorphic_url(User.find_by_id(post.user_id)) %></span>
+    <% end %>
+
+    <div class="row content">
+      <div class="col-md-4 col-xs-4">
+        <% if post.picture? %>
+          <a href="#" class="thumbnail", title="<%=post.title%>">
+            <%= image_tag post.picture.url  %>
+          </a>
+        <% end %>
+      </div>
+      <div class="col-md-8 col-xs-8">
+        <div class="post-text">
+          <p><%= post.content %></h1>
+        </div>
+        <% if current_user.admin? %>
+          <%= link_to "delete", polymorphic_url(post), method: :delete,
+          data: { confirm: "You sure?" } %>
+        <% end %>
+        <%= link_to "Reply", new_comment_path(post_params(post)), class:"btn btn-primary" %>
+        <span class="timestamp">
+          Posted <%= time_ago_in_words(post.created_at) %> ago.
+        </span>
+      </div>
+    </div>
+  </li>
+
+  <%= render partial:'shared/post', collection: post.comments, as: :post %>
+</ol>
+

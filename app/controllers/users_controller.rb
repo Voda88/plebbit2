@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
   	@user=User.find(params[:id])
     @topics=@user.topics.paginate(page:params[:page])
+    @comments= Comment.where(user_id: (params[:id])).paginate(page:params[:page])
   end
 
   def new
