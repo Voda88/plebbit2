@@ -18,14 +18,15 @@ ActiveRecord::Schema.define(version: 20160606044923) do
     t.string   "title"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "commentable_id"
     t.string   "picture"
     t.string   "commentable_type"
-    t.integer  "commentable_id"
     t.integer  "user_id"
     t.integer  "topic_id"
   end
 
   add_index "comments", ["commentable_id", "created_at"], name: "index_comments_on_commentable_id_and_created_at"
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
 
   create_table "topics", force: :cascade do |t|
     t.text     "content"

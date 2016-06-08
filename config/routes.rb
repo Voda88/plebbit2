@@ -32,8 +32,8 @@ Rails.application.routes.draw do
   delete 'delete_comment' => 'comments#destroy'
 
   resources :users
-  
-  resources :topics do 
+
+  resources :topics do
     resources :comments
   end
   resources :comments do

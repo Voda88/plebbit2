@@ -1,18 +1,19 @@
 <li id="topic-<%= topic.id %>">
-  <% if current_user.admin? %>
-    <span class="user"><%= link_to full_name(topic.user), polymorphic_url(topic.user) %></span>
-  <% end %>
+
+  <%# if current_user.admin? %>
+    <%#span class="user"><%= link_to full_name(topic.user), polymorphic_url(topic.user) %><%#/span>
+  <%# end %>
 
   <div class="row content">
-    <div class="col-md-3 col-xs-3">
+    <div class="col-md-4">
       <% if topic.picture? %>
         <a href="#" class="thumbnail", title="<%=topic.title%>">
           <%= image_tag topic.picture.url  %>
         </a>
       <% end %>
     </div>
-    <div class="col-md-6 col-xs-6">
-      <h1><%= link_to topic.title, polymorphic_url(topic) %></h1>
+    <div class="col-md-6 topic_info">
+      <p class="topic_title"><%= link_to topic.title, polymorphic_url(topic), :class => "topic_title" %></p>
       <% if current_user.admin? %>
         <%= link_to "delete", polymorphic_url(topic), method: :delete,
         data: { confirm: "You sure?" } %>

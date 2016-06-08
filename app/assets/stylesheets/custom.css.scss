@@ -1,15 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 $body-bg: transparent;
-$dark-grey: #222;
+$dark-gray: #222;
 
-@mixin cover-background($img-uri, $background-top:"center", 
-	$background-left:"center", 
-	$background-attachment:"fixed") 
-	{ background: url($img-uri) no-repeat unquote($background-top) unquote($background-left) unquote($background-attachment); 
-	-webkit-background-size: cover; 
-	-moz-background-size: cover; 
-	-o-background-size: cover; 
+@mixin cover-background($img-uri, $background-top:"center",
+	$background-left:"center",
+	$background-attachment:"fixed")
+	{ background: url($img-uri) no-repeat unquote($background-top) unquote($background-left) unquote($background-attachment);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
 }
 
@@ -49,8 +49,8 @@ ol{
 /* header */
 
 header{
-	background:#000;
-	color:white;
+	background:white;
+	color:black;
 	p{
 		margin-bottom:20px;
 	}
@@ -63,7 +63,7 @@ header{
 
 #logo{
 	float:left;
-	color:white;
+	color:black;
 	font-size:24px;
 	font-width:200;
 	link-style:none;
@@ -73,29 +73,29 @@ header{
 /* footer */
 
 footer{
+	border-top: 1px solid #f5f5f5;
 	position:fixed;
 	height:50px;
 	bottom:0px;
 	width:100%;
-	background-color: $dark-grey;
+	background-color: #002749;
 	.container{
 		.col-md-3{
 			padding:0;
 		}
-		p{
-			float:left;
-			color:white;
-			padding-top:20px;
+		small{
+			float:right;
+			padding-top:17px;
+			color: #002749 + 30;
 		}
 	}
-	
+
 }
 
 /* Home page */
 
 #home{
 	height:100%;
-	@include cover-background('Splash.jpeg', 80%, 100%, "scroll");
 
 	h1{
 	margin-top:120px;
@@ -105,7 +105,7 @@ footer{
 		span{
 		color:white;
 		font-width:200;
-		background: $dark-grey;
+		background: $gray-lighter;
 		border-radius:5px;
 		padding:10px;
 		}
@@ -115,17 +115,17 @@ footer{
 		margin-bottom:60px;
 	}
 
-	.btn{
+	/*.btn{
 		width:140px;
 		font-width:200;
 		font-size:28px;
-	}
+	}*/
 }
 
-/*forms */ 
+/*forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  /*border: 1px solid #bbb;*/
   width: 100%;
   margin-bottom: 15px;
 }
@@ -135,7 +135,7 @@ input {
 }
 
 .btn{
-	margin-bottom:100px;
+	margin: 8px 0px;
 }
 
 /* error messages */
@@ -169,51 +169,78 @@ input {
 
 /* b */
 
-.btn {
+/*.btn {
 	margin:20px 20px 20px 20px;
-}
+}*/
 
 /* topics */
+
+#before_topics {
+	float: left;
+}
 
 .topics {
   list-style: none;
   padding: 0;
   li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    padding: 0px;
+    border-bottom: 1px solid #f5f5f5;
   }
   .user {
     margin-top: 5em;
     padding-top: 0;
   }
-  .content {
+  /*.content {
     display: block;
     img {
       display: block;
-      padding: 5px 0;
     }
-  }
+  }*/
   .timestamp {
     color: $gray-light;
     display: block;
-  } 
+  }
   .row{
-  	height:200px;
+  	height: auto;
+		margin: 20px 0px 20px 0px;
   }
   .thumbnail {
+		margin: 0px;
   	height:180px;
+		padding: 0px;
+		border: 0px;
   	img {
   		height:180px;
+			padding: 1px;
+			border: 1px solid #f5f5f5;
   	}
-  } 
+  }
 }
 
-#new_topic{
-  	margin-top:100px;
+.topic_info {
+	text-align: left;
+}
+
+.topic_title {
+	color: gray;
+	font-size: 18px;
+}
+
+#new_topic {
+  	margin-top: 20px;
   	.btn {
   		margin:0;
   	}
+		textarea {
+			height: 100px;
+		}
+		#new_title {
+			font-size: 18px;
+			font-weight: bold;
+		}
 }
+
+
 
 aside {
   textarea {
@@ -226,7 +253,7 @@ aside {
 
 .posts{
 	li{
-	border:2px solid $gray-light;
+	border:10px solid $gray-light;
 	border-radius: 5px;
 	}
 	.post-text{
@@ -240,11 +267,5 @@ aside {
 /* modal */
 
 .modal {
-	background:white;		
+	background:white;
 }
-
-
-
-
-
-

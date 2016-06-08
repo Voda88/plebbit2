@@ -5,13 +5,13 @@ class Topic < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 300 }
-  validates :title, presence: true, length: {in: 10..50}
+  validates :title, presence: true, length: {in: 1..50}
   validate :picture_size
 
   private
   	def picture_size
   		if picture.size > 15.megabytes
-        	errors.add(:picture, "should be less than 5MB")
+        	errors.add(:picture, "Should be less than 15MB!")
       	end
   	end
 end

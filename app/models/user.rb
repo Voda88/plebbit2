@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
 	before_save { email.downcase! }
 	before_create :create_activation_digest
 	validates :first_name, presence: true, length: {maximum: 50}
-	validates :last_name, presence: true, length: {maximum:50}
-	validates :email, 
-	presence: true, 
-	length: {maximum:50}, 
-	format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}, 
+	validates :last_name, presence: true, length: {maximum: 50}
+	validates :email,
+	presence: true,
+	length: {maximum:50},
+	format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i},
 	uniqueness: {case_sensitive: false}
-	
-	validates :password, presence: true, length: {in: 7..20}, allow_nil: true
+
+	validates :password, presence: true, length: {in: 7..50}, allow_nil: true
 	#Returns the hash digest of the given string.
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

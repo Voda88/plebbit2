@@ -1,16 +1,12 @@
 <div class="container" id="new_post">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6">
 			<%= form_for(@topic) do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
-			<%= f.text_field :title, placeholder: "title" %>
-			<div class="field">
-				<%= f.text_area :content, placeholder: "content" %>
-			</div>
-			<span class="picture">
-    			<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-  			</span>
-			<%= f.submit "Post", class: "btn btn-primary" %>
+			<%= f.text_field :title, placeholder: "Otsikko", :class => "form-control", :id => "new_title" %>
+			<%= f.text_area :content, placeholder: "Teksti", :class => "form-control" %>
+    	<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+			<%= f.submit "Lisää", class: "btn btn-primary" %>
 			<% end %>
 		</div>
 	</div>

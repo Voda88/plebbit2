@@ -1,11 +1,8 @@
 <% provide(:title, 'Satunnainen') %>
-<h1> /b/ </h1>
-<div>
-	<%= link_to "New topic", new_topic_path, class: "btn btn-lg btn-primary" %>
+<div class="container">
+	<%= will_paginate %>
+		<ol class="topics">
+			<%= render @topics %>
+		</ol>
+	<%= render 'topics/full_image' %>
 </div>
-<%= will_paginate %>
-<ol class="topics">
-	<%= render @topics %>
-</ol>
-
-<%= render 'topics/full_image' %>
