@@ -1,6 +1,6 @@
 <li id="comment-<%= comment.id %>">
-  <% if current_user.admin? %>
-    <span class="user"><%= link_to full_name(User.find_by_id(comment.user_id)), polymorphic_url(User.find_by_id(comment.user_id)) %></span>
+  <% if current_user && current_user.admin? %>
+    <%= render 'shared/user_profile_link', post: comment %>
   <% end %>
 
   <div class="row content">
@@ -12,10 +12,9 @@
       <% end %>
     </div>
     <div class="col-md-6 col-xs-6">
-      <h1><%= link_to comment.title, polymorphic_url(Topic.find_by_id(comment.topic_id)) %></h1>
+      <h1><%= link_to comment.title, polymorphic_path(Topic.find_by_id(comment.topic_id)) %></h1>
       <% if current_user.admin? %>
-        <%= link_to "delete", polymorphic_url(Topic.find_by_id(comment.topic_id)), method: :delete,
-        data: { confirm: "You sure?" } %>
+        <%= render 'shared/post_delete_link', post: comment %>
       <% end %>
       <span class="timestamp">
         Posted <%= time_ago_in_words(comment.created_at) %> ago.

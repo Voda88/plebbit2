@@ -3,7 +3,6 @@ require 'test_helper'
 class TopicTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    # This code is not idiomatically correct.
     @topic = @user.topics.build(title: "asdfsdafdafdsa",content: "lorem ipsum")
   end
 

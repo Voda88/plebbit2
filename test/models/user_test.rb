@@ -100,7 +100,9 @@ class UserTest < ActiveSupport::TestCase
 	test "associated topic should be destroyed" do
     @user.save
     @user.topics.create!(content: "Lorem ipsum",
-    					 title: "asdfasdfasdf")
+    					 title: "asdfasdfasdf",
+    					 user_id: 103
+    					 )
     assert_difference 'Topic.count', -1 do
       @user.destroy
     end

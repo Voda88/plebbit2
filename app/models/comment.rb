@@ -6,7 +6,6 @@ class Comment < ActiveRecord::Base
   validates :user_id, presence: true
   validates :topic_id, presence: true
   validates :content, presence: true, length: { maximum: 300 }
-  validates :title, presence: true, length: {in: 1..50}
   validate :picture_size
 
   private

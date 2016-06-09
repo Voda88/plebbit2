@@ -11,7 +11,7 @@ class TopicsIndexTest < ActionDispatch::IntegrationTest
   	get topics_path
   	assert_template 'topics/index'
   	assert_select 'div.pagination'
-  	first_page_of_topics = Topic.paginate(page: 1)
+  	first_page_of_topics = Topic.paginate(page: 1, :per_page => 15)
   	first_page_of_topics.each do |topic|	
   		assert_select 'a[href=?]', user_path(topic.user), text: full_name(topic.user)
   		assert_select 'a[href=?]', topic_path(topic), text: topic.title
@@ -25,9 +25,9 @@ class TopicsIndexTest < ActionDispatch::IntegrationTest
   end
 
   test "index as non-admin" do
-    log_in_as(@non_admin,remember_me:'0')
+    log_in_as(@non_admin)
     get topics_path
-    first_page_of_topics = Topic.paginate(page: 1)
+    first_page_of_topics = Topic.paginate(page: 1, :per_page => 15)
   	first_page_of_topics.each do |topic|
   		assert_select 'a', text: full_name(topic.user), count:0
   		assert_select 'a[href=?]', topic_path(topic), text: topic.title

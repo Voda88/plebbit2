@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
+  root 'topics#index' 
 
-  get 'password_resets/edit'
-
-  get 'sessions/new'
-
-  root 'static_pages#home' 
   get 'static_pages/help', as: 'help'
   get 'static_pages/about', as: 'about'
+
+  get 'password_resets/new'
+  get 'password_resets/edit'
+  get 'sessions/new'
 
   get 'users/show'
   get 'users/new', as: 'signup'
