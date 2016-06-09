@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
 
 	def create
 		@user=current_user
-		@topic=current_user.topics.build(topic_params)
+		@topic=@user.topics.build(topic_params)
 		if @topic.save
 			flash[:success] = "Post successful!"
 			redirect_to @topic
@@ -36,7 +36,7 @@ class TopicsController < ApplicationController
 	private
 
 	def topic_params
-		params.require(:topic).permit(:content, :title, :picture, :user_id, :topic_id)
+		params.require(:topic).permit(:content, :title, :picture, :user_id)
 	end
 
 	def correct_user

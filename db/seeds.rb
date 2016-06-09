@@ -15,7 +15,16 @@ User.create!(first_name: "Mikko",
              activated: true,
              activated_at: Time.zone.now)
 
+User.create!(first_name: "Mikko",
+             last_name:  "Kärkkäinen",
+             email: "fdsa@railstutorial.org",
+             password:              "foobars",
+             password_confirmation: "foobars",
+             activated: true,
+             activated_at: Time.zone.now)
+
 Topic.create!(	title: "ASDFASFDSAFsda",
 				content: "asdfasdfsfdsafdsa",
 				user_id:1,			
 	)
+

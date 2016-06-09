@@ -1,7 +1,8 @@
 <ol>
   <li id="post-<%= post.id %>">
-    <% if current_user.admin? %>
-      <span class="user"><%= link_to full_name(User.find_by_id(post.user_id)), polymorphic_url(User.find_by_id(post.user_id)) %></span>
+
+    <% if current_user && current_user.admin? %>
+      <%= render 'user_profile_link', post: post %>
     <% end %>
 
     <div class="row content">
@@ -13,17 +14,21 @@
         <% end %>
       </div>
       <div class="col-md-8 col-xs-8">
+        
         <div class="post-text">
           <p><%= post.content %></h1>
         </div>
-        <% if current_user.admin? %>
-          <%= link_to "delete", polymorphic_url(post), method: :delete,
-          data: { confirm: "You sure?" } %>
+
+        <% if current_user && current_user.admin? %>
+          <%= render 'post_delete_link' %>
         <% end %>
+
         <%= link_to "Reply", new_comment_path(post_params(post)), class:"btn btn-primary" %>
+
         <span class="timestamp">
           Posted <%= time_ago_in_words(post.created_at) %> ago.
         </span>
+
       </div>
     </div>
   </li>

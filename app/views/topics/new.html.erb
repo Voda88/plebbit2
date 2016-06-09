@@ -5,7 +5,7 @@
 			<%= render 'shared/error_messages', object: f.object %>
 			<%= f.text_field :title, placeholder: "Otsikko", :class => "form-control", :id => "new_title" %>
 			<%= f.text_area :content, placeholder: "Teksti", :class => "form-control" %>
-    	<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    		<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
 			<%= f.submit "Lisää", class: "btn btn-primary" %>
 			<% end %>
 		</div>
