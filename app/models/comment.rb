@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
+  has_many :votes, as: :voteable
   default_scope -> {order(created_at: :desc)}
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
