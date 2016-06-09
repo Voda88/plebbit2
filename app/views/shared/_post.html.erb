@@ -1,38 +1,34 @@
 <ol>
   <li id="post-<%= post.id %>">
-
-    <% if current_user && current_user.admin? %>
-      <%= render 'user_profile_link', post: post %>
-    <% end %>
-
     <div class="row content">
-      <div class="col-md-4 col-xs-4">
+      <div class="col-md-4">
         <% if post.picture? %>
           <a href="#" class="thumbnail", title="<%=post.title%>">
             <%= image_tag post.picture.url  %>
           </a>
         <% end %>
       </div>
-      <div class="col-md-8 col-xs-8">
-        
+      <div class="col-md-6">
+        <div class="post-text">
+          <% if current_user && current_user.admin? %>
+            <%= render 'shared/user_profile_link', post: post %>
+          <% end %>
+        </div>
+        <div class="timestamp">
+          <p>Posted <%= time_ago_in_words(post.created_at) %> ago.</p>
+        </div>
         <div class="post-text">
           <p><%= post.content %></h1>
         </div>
-
-        <% if current_user && current_user.admin? %>
-          <%= render 'post_delete_link' %>
-        <% end %>
-
-        <%= link_to "Reply", new_comment_path(post_params(post)), class:"btn btn-primary" %>
-
-        <span class="timestamp">
-          Posted <%= time_ago_in_words(post.created_at) %> ago.
-        </span>
-
+        <div class="post-text">
+          <% if current_user && current_user.admin? %>
+            <%= render 'shared/post_delete_link', post: post %>
+          <% end %>
+          <%= link_to "Kommentoi", new_comment_path(post_params(post)), class:"btn btn-link" %>
+        </div>
       </div>
     </div>
   </li>
 
   <%= render partial:'shared/post', collection: post.comments, as: :post %>
 </ol>
-
