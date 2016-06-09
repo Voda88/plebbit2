@@ -2,6 +2,7 @@
 @import "bootstrap";
 $body-bg: transparent;
 $dark-gray: #222;
+$gray-light: #f5f5f5;
 
 @mixin cover-background($img-uri, $background-top:"center",
 	$background-left:"center",
@@ -44,6 +45,7 @@ body {
 
 ol{
 	list-style:none;
+	padding: 0px;
 }
 
 /* header */
@@ -197,8 +199,8 @@ input {
     }
   }*/
   .timestamp {
-    color: $gray-light;
-    display: block;
+    color: $gray;
+		text-align: left;
   }
   .row{
   	height: auto;
@@ -253,19 +255,50 @@ aside {
 
 .posts{
 	li{
-	border:10px solid $gray-light;
-	border-radius: 5px;
+		padding: 0px;
+		border-bottom: 1px solid #f5f5f5;
 	}
 	.post-text{
-		border: 1px solid $gray-light;
-		border-radius:10px;
-		text-align:left;
-		padding:20px;
+		border: 0px;
+		text-align: left;
+		padding-top: 20px;
 	}
+	.timestamp {
+    color: $gray;
+		text-align: left;
+		font-style: italic;
+		font-size: 12px;
+	}
+	#delete_button {
+		color: red;
+	}
+}
+
+.post-text{
+	border: 0px;
+	text-align: left;
+	padding-top: 20px;
+}
+.timestamp {
+	color: $gray;
+	text-align: left;
+	font-style: italic;
+	font-size: 12px;
+}
+#delete_button {
+	color: red;
 }
 
 /* modal */
 
 .modal {
 	background:white;
+	height: 100%;
+}
+.modal-body {
+	height: 85%;
+	display: inline-block;
+	img {
+		height: 100%;
+	}
 }

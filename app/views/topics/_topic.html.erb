@@ -1,9 +1,4 @@
 <li id="topic-<%= topic.id %>">
-
-  <%# if current_user.admin? %>
-    <%#span class="user"><%= link_to full_name(topic.user), polymorphic_url(topic.user) %><%#/span>
-  <%# end %>
-
   <div class="row content">
     <div class="col-md-4">
       <% if topic.picture? %>
@@ -12,15 +7,23 @@
         </a>
       <% end %>
     </div>
-    <div class="col-md-6 topic_info">
-      <p class="topic_title"><%= link_to topic.title, polymorphic_url(topic), :class => "topic_title" %></p>
-      <% if current_user.admin? %>
-        <%= link_to "delete", polymorphic_url(topic), method: :delete,
-        data: { confirm: "You sure?" } %>
-      <% end %>
-      <span class="timestamp">
-        Posted <%= time_ago_in_words(topic.created_at) %> ago.
-      </span>
+      <div class="col-md-6">
+        <div class="post-text">
+          <%= link_to topic.title, polymorphic_url(topic), :class => "topic_title" %>
+        </div>
+        <div class="post-text">
+          <% if current_user && current_user.admin? %>
+            <%= render 'shared/user_profile_link', post: topic %>
+          <% end %>
+        </div>
+        <div class="timestamp">
+          <p>Posted <%= time_ago_in_words(topic.created_at) %> ago.</p>
+        </div>
+        <div class="post-text">
+          <% if current_user && current_user.admin? %>
+            <%= render 'shared/post_delete_link', post: topic %>
+          <% end %>
+        </div>
     </div>
   </div>
 </li>
