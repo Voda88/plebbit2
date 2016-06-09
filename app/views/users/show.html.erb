@@ -11,7 +11,7 @@
 			<% end %>
 		</div>
 		<div class="col-md-6">
-			<% if !@user.comments.any? %>
+			<% if @user.comments.any? %>
 				<h3>Comments(<%= @comments.count %>)</h3>
 				<ol class="topics">
 					<%= render @comments %>

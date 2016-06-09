@@ -12,7 +12,7 @@
       <% end %>
     </div>
     <div class="col-md-6 col-xs-6">
-      <h1><%= link_to comment.title, polymorphic_path(Topic.find_by_id(comment.topic_id)) %></h1>
+      <h1><%= link_to comment.content, polymorphic_path(Topic.find_by_id(comment.topic_id)) %></h1>
       <% if current_user.admin? %>
         <%= render 'shared/post_delete_link', post: comment %>
       <% end %>

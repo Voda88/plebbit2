@@ -24,16 +24,5 @@
             <%= render 'shared/post_delete_link', post: topic %>
           <% end %>
         </div>
-    <div class="col-md-6 topic_info">
-      <p class="topic_title">
-        <%= link_to topic.title, polymorphic_path(topic), :class => "topic_title" %>
-      </p>
-      <% if current_user && current_user.admin? %>
-        <%= render 'shared/post_delete_link', post: topic %>
-      <% end %>
-      <span class="timestamp">
-        Posted <%= time_ago_in_words(topic.created_at) %> ago.
-      </span>
-    </div>
   </div>
 </li>
