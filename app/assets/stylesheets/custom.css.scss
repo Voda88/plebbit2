@@ -2,7 +2,7 @@
 @import "bootstrap";
 $body-bg: transparent;
 $dark-gray: #222;
-$gray-light: #f5f5f5;
+$light-gray: #f5f5f5;
 
 @mixin cover-background($img-uri, $background-top:"center",
 	$background-left:"center",
@@ -88,7 +88,7 @@ footer{
 		small{
 			float:right;
 			padding-top:17px;
-			color: #002749 + 30;
+			color: #002749 + 50;
 		}
 	}
 
@@ -107,7 +107,7 @@ footer{
 		span{
 		color:white;
 		font-width:200;
-		background: $gray-lighter;
+		background: $light-gray;
 		border-radius:5px;
 		padding:10px;
 		}
@@ -165,7 +165,7 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid $light-gray;
   }
 }
 

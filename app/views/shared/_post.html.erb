@@ -11,7 +11,7 @@
       <div class="col-md-6">
         <div class="post-text">
           <% if current_user && current_user.admin? %>
-            <%= render 'user_profile_link', post: post %>
+            <%= render 'shared/user_profile_link', post: post %>
           <% end %>
         </div>
         <div class="timestamp">
@@ -22,7 +22,7 @@
         </div>
         <div class="post-text">
           <% if current_user && current_user.admin? %>
-            <%= render 'post_delete_link' %>
+            <%= render 'shared/post_delete_link', post: post %>
           <% end %>
           <%= link_to "Kommentoi", new_comment_path(post_params(post)), class:"btn btn-link" %>
         </div>
