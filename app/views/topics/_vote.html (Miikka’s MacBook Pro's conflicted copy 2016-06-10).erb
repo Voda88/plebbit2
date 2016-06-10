@@ -2,41 +2,30 @@
   <span class="<%=has_voted(post)%>">Voted!</span> </br>
 
   <div class="vote">
-    <svg height="30" viewBox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg">
-      <path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"/>
-      <path d="M0 0h48v48h-48z" fill="none"/>
-    </svg>
-    <div class="vote_number">
-      <p>
-        <%=count_upvotes_for_voteable(post)%>
-          <%= form_for [post, Vote.new] do |f| %>
-          <%= f.hidden_field :user_id, value:@user.id %>
-          <%= f.hidden_field :number, value: 1 %>
-          <%= button_tag( :class => "hide_button") do %>
-            <svg height="30" viewBox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"/>
-              <path d="M0 0h48v48h-48z" fill="none"/>
-            </svg>
-          <% end %>
-        <% end %>
-      </p>
-    </div>
-  </div>
+    <p class="vote_number"><%=count_upvotes_for_voteable(post)%></p>
+      <%= form_for [post, Vote.new] do |f| %>
+      <%= f.hidden_field :user_id, value:@user.id %>
+      <%= f.hidden_field :number, value: 1 %>
+      <%= button_tag( :class => "hide_button") do %>
+        <svg height="30" viewBox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"/>
+          <path d="M0 0h48v48h-48z" fill="none"/>
+        </svg>
+      <% end %>
+    <% end %>
+</div>
 
   <div class="vote">
-    <svg height="30" viewBox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg">
-      <path d="M14.83 16.42l9.17 9.17 9.17-9.17 2.83 2.83-12 12-12-12z"/>
-      <path d="M0-.75h48v48h-48z" fill="none"/>
-    </svg>
-    <div class="vote_number">
-      <p>
-        <%= count_downvotes_for_voteable(post)%>
-          <%= form_for [post, Vote.new] do |f| %>
-          <%= f.hidden_field :user_id, value:@user.id %>
-          <%= f.hidden_field :number, value: -1 %>
-          <%= f.submit "downvote", :class => "hide_button" %>
-        <% end %>
-      </p>
-    </div>
+    <p class="vote_number"><%= count_downvotes_for_voteable(post)%></p>
+      <%= form_for [post, Vote.new] do |f| %>
+      <%= f.hidden_field :user_id, value:@user.id %>
+      <%= f.hidden_field :number, value: -1 %>
+      <%= button_tag( :class => "hide_button") do %>
+        <svg height="30" viewBox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.83 16.42l9.17 9.17 9.17-9.17 2.83 2.83-12 12-12-12z"/>
+          <path d="M0-.75h48v48h-48z" fill="none"/>
+        </svg>
+      <% end %>
+    <% end %>
   </div>
 </div>
