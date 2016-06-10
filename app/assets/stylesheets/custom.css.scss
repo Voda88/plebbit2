@@ -177,10 +177,6 @@ input {
 
 /* topics */
 
-#before_topics {
-	float: left;
-}
-
 .topics {
   list-style: none;
   padding: 0;
@@ -192,12 +188,6 @@ input {
     margin-top: 5em;
     padding-top: 0;
   }
-  /*.content {
-    display: block;
-    img {
-      display: block;
-    }
-  }*/
   .timestamp {
     color: $gray;
 		text-align: left;
@@ -307,19 +297,55 @@ aside {
 
 .voting{
 
+	width: 75px;
+	height: 180px;
+	margin-top: 30px;
+
+	.vote * {
+		display: inline-block;
+	}
+
 	span{
 		color:#fff;
 	}
+	.vote_number {
+		position: absolute;;
+		left: 25px;
+		width: 20px;
+		display: inline-block;
+		float: left;
+		padding-top: 7px;
+	}
 
+	.hide_button {
+		background: white;
+		border: 0px;
+		display: inline-block;
+		margin: 2px 5px;
+		padding: 0px;
+	}
+
+	.new_vote {
+		display: inline-block;
+	}
+
+	.vote {
+		margin: 5px 0px;
+		height: 30px;
+	}
+	.new_vote {
+		width: 30px;
+		height: 30px;
+		position: relative;
+		bottom: 1px;
+		right: 0px;
+	}
 	.upvoted{
 			color:green;
-	}	
-	
+	}
+
 	.downvoted{
 			color:red;
-	}	
+	}
+
 }
-
-
-
-

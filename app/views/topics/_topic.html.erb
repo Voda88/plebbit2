@@ -1,5 +1,10 @@
 <li id="topic-<%= topic.id %>">
   <div class="row content">
+    <div class="col-md-1">
+      <% if current_user %>
+        <%= render 'topics/vote', post: topic %>
+      <% end %>
+    </div>
     <div class="col-md-4">
       <% if topic.picture? %>
         <a href="#" class="thumbnail", title="<%=topic.title%>">
@@ -7,7 +12,7 @@
         </a>
       <% end %>
     </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="post-text">
           <%= link_to topic.title, topic_path(topic), :class => "topic_title" %>
         </div>
@@ -16,12 +21,6 @@
             <%= render 'shared/user_profile_link', post: topic %>
           <% end %>
         </div>
-
-        <% if current_user %>
-          <%= render 'topics/vote', post: topic %>
-        <% end %>
-        
-
         <div class="timestamp">
           <p>Posted <%= time_ago_in_words(topic.created_at) %> ago.</p>
         </div>
