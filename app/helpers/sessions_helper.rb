@@ -64,6 +64,30 @@ module SessionsHelper
 		end
 	end
 
+	#voting
+
+	def count_upvotes_for_voteable(voteable)
+		Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name, number: 1).sum(:number)
+	end
+
+	def count_downvotes_for_voteable(voteable)
+		Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name, number: -1).sum(:number)
+	end
+
+	def count_karma
+		Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name).sum(:number)
+	end
+
+	def has_voted(voteable)
+		if logged_in?
+			if !Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name, user_id:@user.id, number: 1).empty?
+				return 'upvoted'
+			elsif !Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name, user_id:@user.id, number: -1).empty?
+				return 'downvoted'
+			end
+		end
+	end
+
 	private
 
 	def logged_in_user

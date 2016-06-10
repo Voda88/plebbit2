@@ -16,7 +16,7 @@ class TopicsIndexTest < ActionDispatch::IntegrationTest
   		assert_select 'a[href=?]', user_path(topic.user), text: full_name(topic.user)
   		assert_select 'a[href=?]', topic_path(topic), text: topic.title
   		unless topic.user==@admin
-  			assert_select 'a[href=?]', topic_path(topic), text: 'delete'
+  			assert_select 'a[href=?]', topic_path(topic), text: 'Poista'
   		end
   	end
   	assert_difference 'Topic.count', -1 do
@@ -31,7 +31,7 @@ class TopicsIndexTest < ActionDispatch::IntegrationTest
   	first_page_of_topics.each do |topic|
   		assert_select 'a', text: full_name(topic.user), count:0
   		assert_select 'a[href=?]', topic_path(topic), text: topic.title
-  		assert_select 'a', text: 'delete', count: 0
+  		assert_select 'a', text: 'poista', count: 0
   	end 
   end
 

@@ -20,6 +20,11 @@
         <div class="post-text">
           <p><%= post.content %></h1>
         </div>
+
+        <% if current_user %>
+          <%= render 'topics/vote', post: post %>
+        <% end %>
+
         <div class="post-text">
           <% if current_user && current_user.admin? %>
             <%= render 'shared/post_delete_link', post: post %>

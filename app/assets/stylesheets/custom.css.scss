@@ -302,3 +302,24 @@ aside {
 		height: 100%;
 	}
 }
+
+/* voting */
+
+.voting{
+
+	span{
+		color:#fff;
+	}
+
+	.upvoted{
+			color:green;
+	}	
+	
+	.downvoted{
+			color:red;
+	}	
+}
+
+
+
+

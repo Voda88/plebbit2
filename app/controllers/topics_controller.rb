@@ -3,10 +3,12 @@ class TopicsController < ApplicationController
 	before_action :admin_user, only: :destroy
 
 	def index
+		@user= current_user
 		@topics=Topic.paginate(page: params[:page])
 	end
 
 	def show
+		@user = current_user
 		@topic=Topic.find(params[:id])
 	end
 

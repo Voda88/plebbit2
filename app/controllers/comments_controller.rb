@@ -8,17 +8,18 @@ class CommentsController < ApplicationController
 	end
 
 	def new	
-		find_commentable
 		@user=current_user
+		find_commentable
 		@comment=Comment.new
 	end
 
 	def create
 		@user=current_user
+		
 		@comment= @@commentable.comments.build(comment_params)
 		if @comment.save
 			flash[:success] = "Comment successful!"
-			redirect_to @user
+			redirect_to Topic.find_by_id(@comment.topic_id)
 		else
 			render 'new'
 		end

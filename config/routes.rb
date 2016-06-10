@@ -30,14 +30,19 @@ Rails.application.routes.draw do
   post 'new_comment' => 'comments#create'
   delete 'delete_comment' => 'comments#destroy'
 
+  get 'votes/create', as: 'vote'
+
   resources :users
 
   resources :topics do
+    resources :votes
     resources :comments
   end
   resources :comments do
     resources :comments
+    resources :votes
   end
+
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 

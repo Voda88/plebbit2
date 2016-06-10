@@ -9,13 +9,19 @@
     </div>
       <div class="col-md-6">
         <div class="post-text">
-          <%= link_to topic.title, polymorphic_url(topic), :class => "topic_title" %>
+          <%= link_to topic.title, topic_path(topic), :class => "topic_title" %>
         </div>
         <div class="post-text">
           <% if current_user && current_user.admin? %>
             <%= render 'shared/user_profile_link', post: topic %>
           <% end %>
         </div>
+
+        <% if current_user %>
+          <%= render 'topics/vote', post: topic %>
+        <% end %>
+        
+
         <div class="timestamp">
           <p>Posted <%= time_ago_in_words(topic.created_at) %> ago.</p>
         </div>

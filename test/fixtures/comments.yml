@@ -2,32 +2,32 @@
 
 orange:
   user_id: 102
-  topic_id: 1
+  topic_id: 201
   content: "I just ate an orange!"
   created_at: <%= 10.minutes.ago %>
 
 tau_manifesto:
   user_id: 102
-  topic_id: 2
+  topic_id: 202
   content: "Check out the @tauday site by @mhartl: http://tauday.com"
   created_at: <%= 3.years.ago %>
 
 cat_video:
   user_id: 101
-  topic_id: 3
+  topic_id: 203
   content: "Sad cats are sad: http://youtu.be/PKffm2uI4dk"
   created_at: <%= 2.hours.ago %>
 
 most_recent:
   user_id: 101
-  topic_id: 4
+  topic_id: 204
   content: "Writing a short test"
   created_at: <%= 2.minutes.ago %>
 
 <% 99.times do |n| %>
 comment<%=n%>:
   user_id: <%=n%>
-  topic_id: <%=n+5%>
+  topic_id: <%=n%>
   content: "What an incredible time to be alive"
   created_at: <%= (n+1).hours.ago %>
 <% end %>
