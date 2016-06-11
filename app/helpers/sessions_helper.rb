@@ -66,20 +66,39 @@ module SessionsHelper
 
 	#voting
 
-	def count_upvotes_for_voteable(voteable)
-		Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name, number: 1).sum(:number)
+	def count_upvotes_for_voteable(voteable_id, voteable_type)
+		Vote.where(voteable_id: voteable_id, voteable_type: voteable_type, number: 1).sum(:number)
 	end
 
-	def count_downvotes_for_voteable(voteable)
-		Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name, number: -1).sum(:number)
+	def count_downvotes_for_voteable(voteable_id, voteable_type)
+		Vote.where(voteable_id: voteable_id, voteable_type: voteable_type, number: -1).sum(:number)
 	end
 
-	def count_upvotes_for_user(user)
-		Vote.where(user_id: user.id, number: 1).sum(:number)
+
+	def Topic_helper(user)
+		Topic.where(user_id:user.id).pluck(:id)
 	end
 
-	def count_downvotes_for_user(user)
-		Vote.where(user_id: user.id, number: -1).sum(:number)
+	def Comment_helper(user)
+		Comment.where(user_id:user.id).pluck(:id)
+	end
+
+	def count_voteable_upvotes_for_user(user,attribute)
+		voteables=send("#{attribute}_helper", user)
+		sum=0
+		voteables.each do |t|
+			sum+=count_upvotes_for_voteable(t, attribute)
+		end
+		return sum
+	end
+
+	def count_voteable_downvotes_for_user(user,attribute)
+		voteables=send("#{attribute}_helper", user)
+		sum=0
+		voteables.each do |t|
+			sum+=count_downvotes_for_voteable(t, attribute)
+		end
+		return sum
 	end
 
 	def has_voted(voteable)
