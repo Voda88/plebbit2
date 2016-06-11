@@ -74,8 +74,12 @@ module SessionsHelper
 		Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name, number: -1).sum(:number)
 	end
 
-	def count_karma
-		Vote.where(voteable_id: voteable.id, voteable_type: voteable.class.name).sum(:number)
+	def count_upvotes_for_user(user)
+		Vote.where(user_id: user.id, number: 1).sum(:number)
+	end
+
+	def count_downvotes_for_user(user)
+		Vote.where(user_id: user.id, number: -1).sum(:number)
 	end
 
 	def has_voted(voteable)

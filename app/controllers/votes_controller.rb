@@ -6,8 +6,8 @@ class VotesController < ApplicationController
 	end
 
 	def create
-		find_voteable
 		@user=current_user
+		find_voteable
 		@vote=@voteable.votes.build(vote_params)
 		if @vote.save
 			flash[:success] = "succesful vote"

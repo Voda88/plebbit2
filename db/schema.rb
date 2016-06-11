@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610040111) do
+ActiveRecord::Schema.define(version: 20160611010438) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160610040111) do
     t.datetime "updated_at",    null: false
     t.string   "title"
     t.string   "picture"
-    t.integer  "comment_id"
     t.string   "voteable_type"
   end
 

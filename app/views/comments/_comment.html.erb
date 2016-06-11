@@ -3,16 +3,20 @@
     <%= render 'shared/user_profile_link', post: comment %>
   <% end %>
 
+  <% if current_user %>
+        <%= render 'topics/vote', post: comment %>
+  <% end %>
+
   <div class="row content">
     <div class="col-md-3 col-xs-3">
       <% if comment.picture? %>
-        <a href="#" class="thumbnail", title="<%=comment.title%>">
+        <a href="#" class="thumbnail", title="<%=comment.topic.title%>">
           <%= image_tag comment.picture.url  %>
         </a>
       <% end %>
     </div>
     <div class="col-md-6 col-xs-6">
-      <h1><%= link_to comment.content, polymorphic_path(Topic.find_by_id(comment.topic_id)) %></h1>
+      <p><%= link_to comment.content, polymorphic_path(Topic.find_by_id(comment.topic_id)) %></p>
       <% if current_user.admin? %>
         <%= render 'shared/post_delete_link', post: comment %>
       <% end %>

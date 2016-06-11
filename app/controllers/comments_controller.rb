@@ -4,18 +4,16 @@ class CommentsController < ApplicationController
 
 	def show
 		@user=current_user
-		@topics=Comment.paginate(page: params[:page])
 	end
 
 	def new	
 		@user=current_user
-		find_commentable
 		@comment=Comment.new
+		find_commentable
 	end
 
 	def create
 		@user=current_user
-		
 		@comment= @@commentable.comments.build(comment_params)
 		if @comment.save
 			flash[:success] = "Comment successful!"

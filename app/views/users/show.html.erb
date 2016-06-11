@@ -1,6 +1,8 @@
 <% provide(:title,"#{@user.first_name} #{@user.last_name}")%>
 <div class="container">
 		<h1><%= full_name(@user) %> </h1>
+		<h1 class="upvotes"><%= count_upvotes_for_user(@user)%></h1>
+		<h1 class="downvotes"><%= count_downvotes_for_user(@user)%></h1>
 		<div class="col-md-6">
 			<% if @user.topics.any? %>
 			<h3>Topics (<%= @user.topics.count %>)</h3>
