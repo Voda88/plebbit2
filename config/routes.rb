@@ -25,13 +25,6 @@ Rails.application.routes.draw do
   post 'new_topic' => 'topics#create'
   delete 'delete_topic' => 'topics#destroy'
 
-  get 'comments/show'
-  get 'new_comment' => 'comments#new'
-  post 'new_comment' => 'comments#create'
-  delete 'delete_comment' => 'comments#destroy'
-
-  get 'votes/create', as: 'vote'
-
   resources :users
 
   resources :topics do

@@ -1,10 +1,6 @@
 class VotesController < ApplicationController
 	before_action :logged_in_user, only: [:create]
 
-	def new
-		@vote=Vote.new
-	end
-
 	def create
 		@user=current_user
 		find_voteable

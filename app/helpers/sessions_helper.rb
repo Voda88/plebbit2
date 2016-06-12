@@ -58,9 +58,9 @@ module SessionsHelper
 	#comment params
 	def post_params(post)
 		if post.is_a?(Topic)
-			post = {topic_id: post.id}
+			post= {topic_id: post.id}
 		elsif post.is_a?(Comment)
-			post = {topic_id: post.topic_id, comment_id: post.id}
+			post ={topic_id: post.topic_id, comment_id: post.id}
 		end
 	end
 
